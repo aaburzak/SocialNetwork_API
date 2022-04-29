@@ -1,0 +1,20 @@
+{
+  "name": "SocialNetwork_API",
+  "version": "1.0.0",
+  "description": "An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaburzak/SocialNetwork_API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaburzak/SocialNetwork_API/issues"
+  },
+  "homepage": "https://github.com/aaburzak/SocialNetwork_API#readme"
+}
