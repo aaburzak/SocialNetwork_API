@@ -57,7 +57,7 @@ const thoughtControl = {
                 runValidators: true
             }
         )
-            .then(thoughData => {
+            .then(thoughtData => {
                 if (!thoughtData) {
                     res.status(404).json({message: 'Thought id not found'});
                     return;
