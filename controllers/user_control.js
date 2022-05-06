@@ -117,18 +117,17 @@ const userControl = {
         console.log("Now deleting friend")
         User.findOneAndUpdate(
             {
-                _id: params.friendId
+                _id : params.userId
             },
             {
                 $pull: {
-                    friends: {
-                        _id : params.friendId
-                    }
+                    friends : params.friendId
                 }
             },
             {
                 new: true,
-                // runVAlidators: true
+                runVAlidators: true,
+                // remove: true
             }
         )
             .then(userData => {
