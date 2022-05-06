@@ -100,24 +100,30 @@ const thoughtControl = {
             .catch(err => res.json(err));
     },
     removeReaction({ params }, res) {
+        console.log("Now Removing Reaction")
         Thought.findOneAndUpdate(
             {
                 _id: params.thoughtId
             },
             {
                 $pull: {
-                    reactions: {
-                        reactionId: params.reactionId
+                        reactions: { reactionId: params.reactionId }
                     }
-                }
             },
             {
-                new: true
+                new: true,
+                runVAlidators: true
             }
         )
-            .then(thoughtData => res.json(thoughtData))
-            .catch(err => res.json(err));
-    }  
+        .then(thoughtData => {
+            if (!thoughtData) {
+                return res.status(404).json({
+                    message: 'Reaction Id Not Found'
+                });
+            }
+            res.json(thoughtData)
+        })
+        .catch(err => res.json(err));
+}
 };
-
 module.exports = thoughtControl;

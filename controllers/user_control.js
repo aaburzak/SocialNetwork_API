@@ -126,8 +126,7 @@ const userControl = {
             },
             {
                 new: true,
-                runVAlidators: true,
-                // remove: true
+                runVAlidators: true
             }
         )
             .then(userData => {
