@@ -46,7 +46,9 @@ const userControl = {
                 _id: params.userId
             },
             {
-                $set: body
+                $push: {
+                    friends : params.friendId
+                }
             },
             {
                 new: true,
@@ -55,7 +57,7 @@ const userControl = {
             
         )
             .then(friendData => {
-                if (friendData) {
+                if (!friendData) {
                     res.status(404).json({ message: 'User id not found'});
                     return;
                 }
@@ -110,20 +112,23 @@ const userControl = {
             .catch(err => res.json(err));
     },
 
+
     removeFriend({ params }, res) {
+        console.log("Now deleting friend")
         User.findOneAndUpdate(
             {
-                _id: params.userId
+                _id: params.friendId
             },
             {
                 $pull: {
                     friends: {
-                        friendId: params.friendId
+                        _id : params.friendId
                     }
                 }
             },
             {
-                new: true
+                new: true,
+                // runVAlidators: true
             }
         )
             .then(userData => {
