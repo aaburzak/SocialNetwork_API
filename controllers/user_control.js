@@ -91,7 +91,7 @@ const userControl = {
 
     removeUser ({ params }, res) {
         User.findOneAndDelete ({
-            id: params.userId
+            _id: params.userId
         })
             .then(deletedUser => {
                 if (!deletedUser) {
